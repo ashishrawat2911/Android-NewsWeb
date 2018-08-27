@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">News Web</string>
+    <string name="api_key">ae6c3c0f9d8e485a98fd70edcff81134</string>
+    <string name="country">in</string>
+    <string name="categories">Categories</string>
+
+</resources>
