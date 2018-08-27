@@ -43,14 +43,14 @@ public class NewsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
-        progressBar=findViewById(R.id.newsListProgressbar);
+        progressBar = findViewById(R.id.newsListProgressbar);
         progressBar.setIndeterminate(true);
         mAPIService = APIClient.getClient().create(APIService.class);
         Intent receivedIntent = getIntent();
         newsType = receivedIntent.getStringExtra(Constants.NEWS_TYPE);
         newsRecyclerView = findViewById(R.id.newsListRecyclerView);
         newsList = new ArrayList<>();
-        newsAdaptor = new NewsAdaptor(this, newsList,newsType);
+        newsAdaptor = new NewsAdaptor(this, newsList, newsType);
         newsRecyclerView.setAdapter(newsAdaptor);
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
@@ -69,9 +69,8 @@ public class NewsListActivity extends AppCompatActivity {
                         newsCall.enqueue(this);
                         return;
                     }
-progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                     if (response.body() == null) return;
-                    Toast.makeText(NewsListActivity.this, "" + response.body().getTotalResults(), Toast.LENGTH_SHORT).show();
                     newsList.addAll(response.body().getArticles());
                     newsAdaptor.notifyDataSetChanged();
 
@@ -84,26 +83,27 @@ progressBar.setVisibility(View.GONE);
             });
 
         } else {
-           newsCall = mAPIService.topNewsCategory(getResources().getString(R.string.country), newsType, getResources().getString(R.string.api_key));
-           newsCall.enqueue(new Callback<News>() {
-               @Override
-               public void onResponse(Call<News> call, Response<News> response) {
-                   if (!response.isSuccessful()) {
-                       newsCall = call.clone();
-                       newsCall.enqueue(this);
-                       return;
-                   }progressBar.setVisibility(View.GONE);
+            newsCall = mAPIService.topNewsCategory(getResources().getString(R.string.country), newsType, getResources().getString(R.string.api_key));
+            newsCall.enqueue(new Callback<News>() {
+                @Override
+                public void onResponse(Call<News> call, Response<News> response) {
+                    if (!response.isSuccessful()) {
+                        newsCall = call.clone();
+                        newsCall.enqueue(this);
+                        return;
+                    }
+                    progressBar.setVisibility(View.GONE);
 
-                   if (response.body() == null) return;
-                   newsList.addAll(response.body().getArticles());
-                   newsAdaptor.notifyDataSetChanged();
-               }
+                    if (response.body() == null) return;
+                    newsList.addAll(response.body().getArticles());
+                    newsAdaptor.notifyDataSetChanged();
+                }
 
-               @Override
-               public void onFailure(Call<News> call, Throwable t) {
-                   progressBar.setVisibility(View.GONE);
-               }
-           });
+                @Override
+                public void onFailure(Call<News> call, Throwable t) {
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
         }
     }
 
