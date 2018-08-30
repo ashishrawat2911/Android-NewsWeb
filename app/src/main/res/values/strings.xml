@@ -3,5 +3,7 @@
     <string name="api_key">ae6c3c0f9d8e485a98fd70edcff81134</string>
     <string name="country">in</string>
     <string name="categories">Categories</string>
+    <string name="for_more_news">For More news</string>
+    <string name="news_image">newsImage</string>
 
 </resources>

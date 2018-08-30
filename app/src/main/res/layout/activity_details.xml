@@ -12,11 +12,13 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="15dp">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
+                android:layout_height="wrap_content">
                 <ProgressBar
                     android:id="@+id/detailsProgressbar"
                     android:layout_width="wrap_content"
@@ -38,7 +40,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/news_image" />
 
                 <TextView
                     android:id="@+id/detailsTitleTextView"
@@ -75,16 +78,17 @@
                     android:id="@+id/moreNews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                   android:textColor="@color/white"
-                    android:text="For More news"
-                    android:padding="20dp"
-                    android:gravity="center"
                     android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="@string/for_more_news"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent" />
             </android.support.constraint.ConstraintLayout>
-
+        </ScrollView>
     </android.support.v7.widget.CardView>
+
 </FrameLayout>
