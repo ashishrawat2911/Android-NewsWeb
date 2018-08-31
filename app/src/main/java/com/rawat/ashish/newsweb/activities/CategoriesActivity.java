@@ -77,9 +77,7 @@ public class CategoriesActivity extends AppCompatActivity {
                 appShareIntent.putExtra(Intent.EXTRA_TEXT, extraText);
                 startActivity(appShareIntent);
                 return true;
-            case R.id.menuAbout:
 
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

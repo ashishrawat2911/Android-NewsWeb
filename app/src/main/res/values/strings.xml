@@ -5,5 +5,7 @@
     <string name="categories">Categories</string>
     <string name="for_more_news">For More news</string>
     <string name="news_image">newsImage</string>
+    <string name="rate">Rate</string>
+    <string name="share">Share</string>
 
 </resources>
