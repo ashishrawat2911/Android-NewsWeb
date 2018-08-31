@@ -78,7 +78,7 @@ public class CategoriesActivity extends AppCompatActivity {
                 startActivity(appShareIntent);
                 return true;
             case R.id.menuAbout:
-                Toast.makeText(getApplicationContext(), "Item 3 Selected", Toast.LENGTH_LONG).show();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
